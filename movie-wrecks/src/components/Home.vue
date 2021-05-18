@@ -46,12 +46,14 @@
     </v-card>
     <v-row justify="center" align="center">
       <div v-for="movie in movies" v-bind:key="movie[0]">
-        <v-card class="ma-2" width="300">
-          <v-row>
-            <img height="400px" :src="movie[9]">
+      <v-col>
+        <v-card width="300">
+          <v-row cols="12" sm="4">
+            <img :src="movie[9]">
           </v-row>
           <v-card-title>{{movie[1]}}</v-card-title>
         </v-card>
+      </v-col>
       </div>
     </v-row>
     </v-container>
@@ -118,8 +120,10 @@ export default {
 
             for (let index = 0; index < response.data.movieList.length; index++) {
 
+              console.log(response.data.movieList[index][0])
+
               if(this.movies.includes(response.data.movieList[index][0])){
-                continue;
+                console.log("CLONE CLONE CLONE")
               } else {
                 this.movies.push(response.data.movieList[index])
               }
